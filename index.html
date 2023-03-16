@@ -7,7 +7,7 @@
     <title>Boolzapp</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -21,11 +21,29 @@
         <div id="main-container">
 
             <header class="my-row">
-                <div id="user-profile">
-                    User
+                <div id="user-profile" class="my-row">
+                    <div id="user-img">
+                        <img src="img/avatar_io.jpg" class="profile-img" alt="">
+                    </div>
+                    <div class="username">
+                        <p class="title">Sofia</p>
+                    </div>
+                    <i class="fa-regular fa-circle"></i>
+                    <i class="fa-solid fa-message"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                    
                 </div>
-                <div id="active-contact">
-                    contact
+                <div id="active-contact" class="my-row">
+                   <div id="active-contact-img">
+                        <img src="img/avatar_1.jpg" class="profile-img" alt="">
+                   </div>
+                   <div id="active-contact-info">
+                        <p class="title">Michele</p>
+                        <p class="subtitle">Ultimo accesso oggi alle 12:00</p>
+                   </div>
+                   <i class="fa-solid fa-magnifying-glass"></i>
+                   <i class="fa-solid fa-link"></i>
+                   <i class="fa-solid fa-ellipsis-vertical"></i>
                 </div>
             </header>
 
@@ -33,11 +51,16 @@
             <div id="main-content">
                 <!-- LEFT SIDE OF THE CONTAINER -->
                 <div id="left-side">
-                    <div id="notifications">
-                        Ricevi notifiche di nuovi messaggi
+                    <div id="notifications" class="my-row">
+                        <i id="bell" class="fa-solid fa-bell-slash"></i>
+                        <div id="advise">
+                            <p class="title">Ricevi notifiche di nuovi messaggi</p>
+                            <p class="subtitle">Attiva notifiche desktop</p>
+                        </div>
                     </div>
-                    <div id="search-contact">
-                        <input type="search">
+                    <div id="search-contact" class="my-row">
+                        <button><i id="small-mglass" class="fa-solid fa-magnifying-glass"></i></button>
+                        <input type="search" placeholder="Cerca o inizia una nuova chat">
                     </div>
 
                     <div id="contacts-container">
