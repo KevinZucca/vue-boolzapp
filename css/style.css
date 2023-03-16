@@ -173,6 +173,18 @@ p {
     flex-grow: 1;
 }
 
+#main-content #left-side #contacts-container .contact {
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    background-color: white;
+}
+
+#left-side #contacts-container .contact .contact-info {
+    flex-grow: 1;
+}
+
+#left-side #contacts-container .contact .time-message {
+    font-size: small;
+}
 
 /* // LEFT SIDE */
 
@@ -194,14 +206,63 @@ p {
 }
 
 #main-container #right-side #main-display {
+    padding: 50px;
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
     flex-grow: 1;
     background-image: url("../img/mine.jpg");
     overflow-y: scroll;
 }
 
+#main-container #right-side #main-display .message {
+    height: 50px;
+    width: 40%;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+#main-container #right-side #main-display .message.green {
+    background-color: #d5f9ba;
+    align-self: flex-end;
+}
+
+.message.white {
+    background-color: white;
+    align-self: flex-start;
+}
+
+#main-container #right-side #main-display .message .box-text {
+    flex-grow: 1;
+}
+
 #main-container #right-side #send-message {
     height: 80px;
+    justify-content: space-between;
 }
+
+#main-container #right-side #send-message #message-writer {
+    border: none;
+    height: 90%;
+    width: 80%;
+    border-radius: 8px;
+}
+
+#smile-container,
+#mic-container {
+    display: flex;
+    width: 10%;
+    justify-content: center;
+}
+
+#right-side .time-message {
+    font-size: 0.7em;
+    color: rgba(0, 0, 0, .3);
+}
+
+
 
 
 
