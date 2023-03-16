@@ -64,12 +64,12 @@
                     </div>
 
                     <div id="contacts-container">
-                        <div class="contact my-row">
+                        <div v-for="(contact,index) in contacts" class="contact my-row">
                             <div id="user-img">
-                                <img src="img/avatar_1.jpg" class="profile-img" alt="">
+                                <img :src="contact.avatar" class="profile-img" alt="">
                             </div>
                             <div class="contact-info">
-                                <p class="title"> Michele</p>
+                                <p class="title"> {{contact.name}}</p>
                                 <p class="subtitle"> Ultimo messaggio inviato</p>
                             </div>
                             <p class="subtitle time-message"> 12:00</p>
