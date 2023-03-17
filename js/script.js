@@ -164,14 +164,10 @@ createApp({
                         status: 'received'
                     }
                 ]
-
-
-                
             }
         ],
         selectedContactIndex: 0,
-        activeMessages: {},
-        
+        newMessageText: "",     
         
         
     }
@@ -182,6 +178,17 @@ createApp({
        this.selectedContactIndex = contactIndex;
        console.log(contactIndex)
     },
+
+    sendMessage() {
+        const selectedContact = this.contacts[this.selectedContactIndex];
+        const newMessage = {
+                date: '10/01/2020 15:51:00',
+                message: this.newMessageText,
+                status: 'sent',
+        }
+        selectedContact.messages.push(newMessage)
+        this.newMessageText = ''
+    }
 
 
   }
