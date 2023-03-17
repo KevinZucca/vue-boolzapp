@@ -60,17 +60,17 @@
                     </div>
                     <div id="search-contact" class="my-row">
                         <button><i id="small-mglass" class="fa-solid fa-magnifying-glass"></i></button>
-                        <input type="search" placeholder="Cerca o inizia una nuova chat">
+                        <input v-model="searchText" @keyup="searchContact()" type="search" placeholder="Cerca o inizia una nuova chat">
                     </div>
 
                     <div id="contacts-container">
-                        <div @click="selectContact(index)" v-for="(contact,index) in contacts" :class="contact == contacts[selectedContactIndex] ? 'active' : '' " class="contact my-row">
+                        <div @click="selectContact(index)" v-for="(contact,index) in contacts" v-show="contact.visible" :class="contact == contacts[selectedContactIndex] ? 'active' : '' " class="contact my-row">
                             <div id="user-img">
                                 <img :src="contact.avatar" class="profile-img" alt="">
                             </div>
                             <div class="contact-info">
                                 <p class="title"> {{contact.name}}</p>
-                                <p class="subtitle"> Ultimo messaggio inviato</p>
+                                <p class="subtitle">Ultimo messaggio</p>
                             </div>
                             <p class="subtitle time-message"> 12:00</p>
                         </div>

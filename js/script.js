@@ -7,7 +7,7 @@ createApp({
             {
                 name: 'Michele',
                 avatar: '../img/avatar_1.jpg',
-                visible: false,
+                visible: true,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -29,7 +29,7 @@ createApp({
             {
                 name: 'Fabio',
                 avatar: './img/avatar_2.jpg',
-                visible: false,
+                visible: true,
                 messages: [
                     {
                         date: '20/03/2020 16:30:00',
@@ -51,7 +51,7 @@ createApp({
             {
                 name: 'Samuele',
                 avatar: './img/avatar_3.jpg',
-                visible: false,
+                visible: true,
                 messages: [
                     {
                         date: '28/03/2020 10:10:40',
@@ -73,7 +73,7 @@ createApp({
             {
                 name: 'Alessandro B.',
                 avatar: './img/avatar_4.jpg',
-                visible: false,
+                visible: true,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -90,7 +90,7 @@ createApp({
             {
                 name: 'Alessandro L.',
                 avatar: './img/avatar_5.jpg',
-                visible: false,
+                visible: true,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -107,7 +107,7 @@ createApp({
             {
                 name: 'Claudia',
                 avatar: './img/avatar_6.jpg',
-                visible: false,
+                visible: true,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -129,7 +129,7 @@ createApp({
             {
                 name: 'Federico',
                 avatar: './img/avatar_7.jpg',
-                visible: false,
+                visible: true,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -146,7 +146,7 @@ createApp({
             {
                 name: 'Davide',
                 avatar: './img/avatar_8.jpg',
-                visible: false,
+                visible: true,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -168,7 +168,9 @@ createApp({
         ],
         selectedContactIndex: 0,
         newMessageText: "",     
-        
+        searchText: "",
+        results: [],
+        lastMessage: "",
         
     }
   },
@@ -200,20 +202,22 @@ createApp({
         }
         selectedContact.messages.push(answer)
         }, 1000);
+    },
+
+    showContact() {
+        results = contacts.name.filter ((elAttuale) => {
+            if (elAttuale.includes(this.searchText)){
+                elAttuale.visible = true;
+            }
+        })
+        return results
+    },
+
+    searchContact () {
+        this.contacts.forEach(contact => {
+            contact.visible = contact.name.toLowerCase().includes(this.searchText.toLowerCase())
+        });
     }
-
-    // startSlide(hover) {
-    //     if(!hover){
-    //         this.timer = setInterval(() => {
-    //             if( this.mainIndex >= this.slides.length - 1) {
-    //                this.mainIndex = 0;
-    //             } else {
-    //                this.mainIndex++;
-    //             }
-                        
-    //         }, 3000);
-    //     }
-
 
   }
 }).mount('#app')
