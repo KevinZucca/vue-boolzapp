@@ -169,8 +169,8 @@ createApp({
         selectedContactIndex: 0,
         newMessageText: "",     
         searchText: "",
-        results: [],
         lastMessage: "",
+        hover: false,
         
     }
   },
@@ -204,20 +204,12 @@ createApp({
         }, 1000);
     },
 
-    showContact() {
-        results = contacts.name.filter ((elAttuale) => {
-            if (elAttuale.includes(this.searchText)){
-                elAttuale.visible = true;
-            }
-        })
-        return results
-    },
-
     searchContact () {
         this.contacts.forEach(contact => {
             contact.visible = contact.name.toLowerCase().includes(this.searchText.toLowerCase())
         });
-    }
+    },
+
 
   }
 }).mount('#app')
