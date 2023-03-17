@@ -188,7 +188,31 @@ createApp({
         }
         selectedContact.messages.push(newMessage)
         this.newMessageText = ''
+    },
+
+    answerMessage() {
+        setTimeout(() => {
+        const selectedContact = this.contacts[this.selectedContactIndex];
+        const answer = {
+            date: '10/01/2020 15:51:00',
+            message: 'ok',
+            status: 'received',
+        }
+        selectedContact.messages.push(answer)
+        }, 1000);
     }
+
+    // startSlide(hover) {
+    //     if(!hover){
+    //         this.timer = setInterval(() => {
+    //             if( this.mainIndex >= this.slides.length - 1) {
+    //                this.mainIndex = 0;
+    //             } else {
+    //                this.mainIndex++;
+    //             }
+                        
+    //         }, 3000);
+    //     }
 
 
   }
