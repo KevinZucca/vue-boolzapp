@@ -35,10 +35,10 @@
                 </div>
                 <div id="active-contact" class="my-row">
                    <div id="active-contact-img">
-                        <img src="img/avatar_1.jpg" class="profile-img" alt="">
+                        <img :src="contacts[selectedContactIndex].avatar" class="profile-img" alt="">
                    </div>
                    <div id="active-contact-info">
-                        <p class="title">Michele</p>
+                        <p class="title">{{contacts[selectedContactIndex].name}}</p>
                         <p class="subtitle">Ultimo accesso oggi alle 12:00</p>
                    </div>
                    <i class="fa-solid fa-magnifying-glass"></i>
@@ -64,7 +64,7 @@
                     </div>
 
                     <div id="contacts-container">
-                        <div v-for="(contact,index) in contacts" class="contact my-row">
+                        <div @click="selectContact(index)" v-for="(contact,index) in contacts" :class="contact == contacts[selectedContactIndex] ? 'active' : '' " class="contact my-row">
                             <div id="user-img">
                                 <img :src="contact.avatar" class="profile-img" alt="">
                             </div>
@@ -87,22 +87,11 @@
                 <div id="right-side">
                 
                     <div id="main-display">
-                        <div class="message green">
-                            <p class="box-text">Hai portato a spasso il cane?</p>
-                            <p class="time-message">15:30</p>
+                        <div v-for="message in contacts[selectedContactIndex].messages" :class="message.status" class="message">
+                            <p class="box-text">{{message.message}}</p>
+                            <p class="time-message">{{message.date}}</p>
                         </div>
-                        <div class="message green">
-                            <p class="box-text">Hai portato a spasso il cane?</p>
-                            <p class="time-message">15:30</p>
-                        </div>
-                        <div class="message white">
-                            <p class="box-text">Hai portato a spasso il cane?</p>
-                            <p class="time-message">15:30</p>
-                        </div>
-                        <div class="message green">
-                            <p class="box-text">Hai portato a spasso il cane?</p>
-                            <p class="time-message">15:30</p>
-                        </div>
+                    
                     </div>
                     <div id="send-message" class="my-row">
                         <div id="smile-container">
