@@ -221,7 +221,11 @@ createApp({
 
      getMessageHour(date) {
          return date.substring(11, 16);
-     }
+     },
+
+     getLastMessageHour(date) {
+        return date.substring(11, 16);
+    }
 
 
   }
