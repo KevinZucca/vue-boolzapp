@@ -171,7 +171,16 @@ createApp({
         searchText: "",
         lastMessage: "",
         hover: false,
-        
+        boxVisible: true,
+
+        options: [
+            { value: '1', label: 'Elimina' },
+            { value: '2', label: 'Info' },
+            { value: '3', label: 'Archivia' },
+          ],
+
+        selectedOption: null, 
+        hours: "",         
     }
   },
 

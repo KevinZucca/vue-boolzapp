@@ -70,11 +70,10 @@
                             </div>
                             <div class="contact-info">
                                 <p class="title"> {{contact.name}}</p>
-                                <p class="subtitle">Ultimo messaggio da aggiornare</p>
+                                <p class="subtitle">{{contact.messages[contact.messages.length-1].message}}</p>
                             </div>
                             <p class="subtitle time-message"> 12:00</p>
                         </div>
-                       
                     </div>
 
 
@@ -87,14 +86,11 @@
                 <div id="right-side">
                 
                     <div id="main-display">
-                        <div @mouseover="hover = true" @mouseleave="hover = false" v-for="message in contacts[selectedContactIndex].messages" :class="message.status" class="message">
+                        <div v-show="boxVisible" @mouseover="hover = true" @mouseleave="hover = false" v-for="message in contacts[selectedContactIndex].messages" :class="message.status" class="message">
                             <p class="box-text">{{message.message}}</p>
                             <p class="time-message">{{message.date}}</p>
                             <select v-show="hover" id="select" class="form-select">
-                                <option selected></option>
-                                <option value="1">Elimina</option>
-                                <option value="2">Info</option>
-                                <option value="3">Archvia</option>
+                                <option @click="deleteMessage(option)" v-for="option in options" value="option.value">{{option.label}}</option>
                             </select>
                         </div>
                     
