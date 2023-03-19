@@ -193,7 +193,7 @@ createApp({
     sendMessage() {
         const selectedContact = this.contacts[this.selectedContactIndex];
         const newMessage = {
-                date: '10/01/2020 15:51:00',
+                date: new Date().toLocaleString('it-IT'),
                 message: this.newMessageText,
                 status: 'sent',
         }
@@ -205,7 +205,7 @@ createApp({
         setTimeout(() => {
         const selectedContact = this.contacts[this.selectedContactIndex];
         const answer = {
-            date: '10/01/2020 15:51:00',
+            date: new Date().toLocaleString('it-IT'),
             message: 'ok',
             status: 'received',
         }
@@ -218,6 +218,10 @@ createApp({
             contact.visible = contact.name.toLowerCase().includes(this.searchText.toLowerCase())
         });
     },
+
+     getMessageHour(date) {
+         return date.substring(11, 16);
+     }
 
 
   }
