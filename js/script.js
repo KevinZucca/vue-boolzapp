@@ -169,7 +169,6 @@ createApp({
         selectedContactIndex: 0,
         newMessageText: "",     
         searchText: "",
-        lastMessage: "",
         hover: false,
         boxVisible: true,
 
@@ -180,14 +179,14 @@ createApp({
           ],
 
         selectedOption: null, 
-        hours: "",         
+        hours: "",  
+        lastAccess: "",    
     }
   },
 
   methods: {
     selectContact(contactIndex) {
        this.selectedContactIndex = contactIndex;
-       console.log(contactIndex)
     },
 
     sendMessage() {
@@ -208,13 +207,16 @@ createApp({
                     message: 'ok',
                     status: 'received',
                 }
-                selectedContact.messages.push(answer)
-                }, 1000);
-            this.newMessageText = ''
+                this.lastAccess = "";
+                selectedContact.messages.push(answer);
+                setTimeout(() => {
+                    this.lastAccess = "";
+                }, 2000);
+                this.lastAccess = "Online"
+                }, 2000);
+            this.newMessageText = "";
+            this.lastAccess = "sta scrivendo...";
         }
-
-        
-        
     },
 
     searchContact () {
