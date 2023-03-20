@@ -197,6 +197,16 @@ createApp({
                 date: new Date().toLocaleString('it-IT'),
                 message: 'E te che gli hai detto?',
                 status: 'received'
+            },
+            {
+                date: new Date().toLocaleString('it-IT'),
+                message: 'Non so cosa dirti',
+                status: 'received'
+            },
+            {
+                date: new Date().toLocaleString('it-IT'),
+                message: 'Beh, io ieri non stavo al massimo quindi',
+                status: 'received'
             }
         ],
 
@@ -209,6 +219,8 @@ createApp({
         selectedOption: null, 
         hours: "", 
         lastAccess: "Ultimo accesso oggi alle " + this.getMessageHour(new Date().toLocaleString('it-IT')),
+        showMic: true,
+        showPlane: false,
     }
   },
 
@@ -247,6 +259,8 @@ createApp({
                 }, 2000);
             this.newMessageText = "";
             this.lastAccess = "sta scrivendo...";
+            this.showMic = true;
+            this.showPlane = false;
         }
     },
 
@@ -264,14 +278,17 @@ createApp({
         return date.substring(11, 16);
     },
 
-    onChange() {
-    },
 
     generateRandomAnswer() {
         const randomAnswer = Math.floor(Math.random() * this.botAnswers.length)
         const answer = this.botAnswers[randomAnswer].message
         return answer
     },
+
+    switchOption() {
+        this.showMic = false;
+        this.showPlane = true;
+    }
 
   }
 }).mount('#app')

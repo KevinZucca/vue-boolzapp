@@ -99,9 +99,10 @@
                         <div id="smile-container">
                             <i class="fa-regular fa-face-smile"></i>
                         </div>
-                        <input v-model="newMessageText" @keyup.enter="sendMessage()" id="message-writer" type="search" placeholder="Scrivi un messaggio">
+                        <input @click="switchOption()" v-model="newMessageText" @keyup="switchOption()" @keyup.enter="sendMessage()" id="message-writer" type="search" placeholder="Scrivi un messaggio">
                         <div id="mic-container">
-                            <i class="fa-solid fa-microphone"></i>
+                            <i v-show="showMic" class="fa-solid fa-microphone"></i>
+                            <i @click="sendMessage()" v-show="showPlane" class="fa-solid fa-paper-plane"></i>
                         </div>
                     </div>
                 </div>
