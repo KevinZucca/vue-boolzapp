@@ -179,8 +179,8 @@ createApp({
           ],
 
         selectedOption: null, 
-        hours: "",  
-        lastAccess: "",    
+        hours: "", 
+        lastAccess: "Ultimo accesso oggi alle " + this.getMessageHour(new Date().toLocaleString('it-IT')),
     }
   },
 
@@ -207,10 +207,13 @@ createApp({
                     message: 'ok',
                     status: 'received',
                 }
-                this.lastAccess = "";
+                this.lastAccess = new Date().toLocaleString('it-IT'),
                 selectedContact.messages.push(answer);
                 setTimeout(() => {
-                    this.lastAccess = "";
+                    this.lastAccess = "Ultimo accesso oggi alle " + this.getMessageHour(new Date().toLocaleString('it-IT'));
+                }, 2000);
+                setTimeout(() => {
+                    this.lastAccess = "Ultimo accesso oggi alle " + this.getMessageHour(new Date().toLocaleString('it-IT'));
                 }, 2000);
                 this.lastAccess = "Online"
                 }, 2000);
