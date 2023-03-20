@@ -172,6 +172,29 @@ createApp({
         hover: false,
         boxVisible: true,
 
+        botAnswers: [
+            {
+                date: new Date().toLocaleString('it-IT'),
+                message: 'Ehilà!',
+                status: 'received'
+            },
+            {
+                date: new Date().toLocaleString('it-IT'),
+                message: 'Non ne ho idea',
+                status: 'received'
+            },
+            {
+                date: new Date().toLocaleString('it-IT'),
+                message: 'Ti risponderò sempre la stessa cosa mi sa',
+                status: 'received'
+            },
+            {
+                date: new Date().toLocaleString('it-IT'),
+                message: 'Ma una partita online piuttosto?',
+                status: 'received'
+            }
+        ],
+
         options: [
             { value: '1', label: 'Elimina' },
             { value: '2', label: 'Info' },
@@ -204,7 +227,7 @@ createApp({
                 const selectedContact = this.contacts[this.selectedContactIndex];
                 const answer = {
                     date: new Date().toLocaleString('it-IT'),
-                    message: 'ok',
+                    message: this.generateRandomAnswer(),
                     status: 'received',
                 }
                 this.lastAccess = new Date().toLocaleString('it-IT'),
@@ -240,7 +263,13 @@ createApp({
         if (selectedOption == this.options[0].label) {
             this.boxVisible = false;
         }
-    }
+    },
+
+    generateRandomAnswer() {
+        const randomAnswer = Math.floor(Math.random() * this.botAnswers.length)
+        const answer = this.botAnswers[randomAnswer].message
+        return answer
+    }   
 
 
   }
