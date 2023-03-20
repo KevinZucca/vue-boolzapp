@@ -225,6 +225,12 @@ createApp({
 
      getLastMessageHour(date) {
         return date.substring(11, 16);
+    },
+
+    deleteMessage(selectedOption) {
+        if (selectedOption == this.options[0].label) {
+            this.boxVisible = false;
+        }
     }
 
 

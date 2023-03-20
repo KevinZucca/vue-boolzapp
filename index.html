@@ -90,7 +90,7 @@
                             <p class="box-text">{{message.message}}</p>
                             <p class="time-message">{{getMessageHour(message.date)}}</p>
                             <select v-show="hover" id="select" class="form-select">
-                                <option @click="deleteMessage(option)" v-for="option in options" value="option.value">{{option.label}}</option>
+                                <option @click="deleteMessage(option.label)" v-for="option in options" value="option.value">{{option.label}}</option>
                             </select>
                         </div>
                     
