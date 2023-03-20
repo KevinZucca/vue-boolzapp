@@ -197,20 +197,24 @@ createApp({
                 message: this.newMessageText,
                 status: 'sent',
         }
-        selectedContact.messages.push(newMessage)
-        this.newMessageText = ''
-    },
-
-    answerMessage() {
-        setTimeout(() => {
-        const selectedContact = this.contacts[this.selectedContactIndex];
-        const answer = {
-            date: new Date().toLocaleString('it-IT'),
-            message: 'ok',
-            status: 'received',
+        if(this.newMessageText == "" || this.newMessageText == null) {
+            return false
+        } else {
+            selectedContact.messages.push(newMessage)
+            setTimeout(() => {
+                const selectedContact = this.contacts[this.selectedContactIndex];
+                const answer = {
+                    date: new Date().toLocaleString('it-IT'),
+                    message: 'ok',
+                    status: 'received',
+                }
+                selectedContact.messages.push(answer)
+                }, 1000);
+            this.newMessageText = ''
         }
-        selectedContact.messages.push(answer)
-        }, 1000);
+
+        
+        
     },
 
     searchContact () {
