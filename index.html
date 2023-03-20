@@ -89,8 +89,8 @@
                         <div v-show="boxVisible" @mouseover="hover = true" @mouseleave="hover = false" v-for="message in contacts[selectedContactIndex].messages" :class="message.status" class="message">
                             <p class="box-text">{{message.message}}</p>
                             <p class="time-message">{{getMessageHour(message.date)}}</p>
-                            <select v-show="hover" id="select" class="form-select">
-                                <option @click="deleteMessage(option.label)" v-for="option in options" value="option.value">{{option.label}}</option>
+                            <select v-model="selectedOption" @change="onChange()" v-show="hover" id="select" class="form-select">
+                                <option v-for="option in options" value="option.value">{{option.label}}</option>
                             </select>
                         </div>
                     

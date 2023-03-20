@@ -192,6 +192,11 @@ createApp({
                 date: new Date().toLocaleString('it-IT'),
                 message: 'Ma una partita online piuttosto?',
                 status: 'received'
+            },
+            {
+                date: new Date().toLocaleString('it-IT'),
+                message: 'E te che gli hai detto?',
+                status: 'received'
             }
         ],
 
@@ -259,18 +264,14 @@ createApp({
         return date.substring(11, 16);
     },
 
-    deleteMessage(selectedOption) {
-        if (selectedOption == this.options[0].label) {
-            this.boxVisible = false;
-        }
+    onChange() {
     },
 
     generateRandomAnswer() {
         const randomAnswer = Math.floor(Math.random() * this.botAnswers.length)
         const answer = this.botAnswers[randomAnswer].message
         return answer
-    }   
-
+    },
 
   }
 }).mount('#app')
