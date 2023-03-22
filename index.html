@@ -70,7 +70,8 @@
                             </div>
                             <div class="contact-info">
                                 <p class="title"> {{contact.name}}</p>
-                                <p class="subtitle">{{contact.messages[contact.messages.length-1].message}}</p>
+                                <p class="subtitle" v-if="contact.messages.length > 0 ">{{contact.messages[contact.messages.length-1].message}}</p>
+                                <p class="subtitle" v-else>Nessun messaggio</p>
                             </div>
                             <p class="subtitle time-message">{{getLastMessageHour(contact.messages[contact.messages.length-1].date)}}</p>
                         </div>
@@ -86,12 +87,13 @@
                 <div id="right-side">
                 
                     <div id="main-display">
-                        <div v-show="boxVisible" @mouseover="hover = true" @mouseleave="hover = false" v-for="message in contacts[selectedContactIndex].messages" :class="message.status" class="message">
+                        <div v-for="(message, index) in contacts[selectedContactIndex].messages" :class="message.status" class="message">
                             <p class="box-text">{{message.message}}</p>
                             <p class="time-message">{{getMessageHour(message.date)}}</p>
-                            <select v-model="selectedOption" @change="onChange()" v-show="hover" id="select" class="form-select">
-                                <option v-for="option in options" value="option.value">{{option.label}}</option>
-                            </select>
+                            <div id="dropdown-menu" v-if="message.showMenu">
+                                <p @click="deleteMessage(index)">Elimina messaggio</p>
+                            </div>
+                            <i @click="toggleShowMenu(message)" id="message-chevron" class="fa-solid fa-chevron-down"></i>
                         </div>
                     
                     </div>
@@ -99,7 +101,7 @@
                         <div id="smile-container">
                             <i class="fa-regular fa-face-smile"></i>
                         </div>
-                        <input @click="switchOption()" v-model="newMessageText" @keyup="switchOption()" @keyup.enter="sendMessage()" id="message-writer" type="search" placeholder="Scrivi un messaggio">
+                        <input @click="switchOption();" v-model="newMessageText" @keyup="switchOption()" @keyup.enter="sendMessage()" id="message-writer" type="search" placeholder="Scrivi un messaggio">
                         <div id="mic-container">
                             <i v-show="showMic" class="fa-solid fa-microphone"></i>
                             <i @click="sendMessage()" v-show="showPlane" class="fa-solid fa-paper-plane"></i>
